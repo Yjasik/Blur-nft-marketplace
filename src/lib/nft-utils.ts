@@ -1,6 +1,4 @@
-// lib/nft-utils.ts
 
-// Определяем типы
 export interface FormattedNFT {
   token_id: string;
   contract_address: string;

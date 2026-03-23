@@ -1,30 +1,12 @@
+// app/api/nft/contract/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getAlchemyClient } from '@/lib/alchemy-client';
-import { getViemClient } from '@/lib/viem-client';
-import { formatAlchemyNFT } from '@/lib/nft-utils';
+import { getAlchemyClient } from '@/src/lib/alchemy-client';
+import { getViemClient } from '@/src/lib/viem-client';
 
 const erc721Abi = [
-  {
-    inputs: [],
-    name: 'name',
-    outputs: [{ name: '', type: 'string' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'symbol',
-    outputs: [{ name: '', type: 'string' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'totalSupply',
-    outputs: [{ name: '', type: 'uint256' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
+  { inputs: [], name: 'name', outputs: [{ name: '', type: 'string' }], stateMutability: 'view', type: 'function' },
+  { inputs: [], name: 'symbol', outputs: [{ name: '', type: 'string' }], stateMutability: 'view', type: 'function' },
+  { inputs: [], name: 'totalSupply', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
 ] as const;
 
 export async function GET(request: NextRequest) {
@@ -45,7 +27,7 @@ export async function GET(request: NextRequest) {
     const alchemy = getAlchemyClient(chain);
     const viemClient = getViemClient(chain);
     
-    // Получаем информацию о коллекции через viem
+    // Получаем информацию о коллекции
     let name = 'Unknown Collection';
     let symbol = 'UNKNOWN';
     let totalSupply = null;
@@ -77,13 +59,12 @@ export async function GET(request: NextRequest) {
       totalSupply = Number(supply);
     } catch (e) {}
     
-    // Получаем NFT из контракта через Alchemy
+    // Получаем NFT из контракта
     const nfts = await alchemy.nft.getNftsForContract(contractAddress, {
       pageSize: limit,
       pageKey,
     });
     
-    // ✅ Форматируем NFT с метаданными
     const formattedNfts = nfts.nfts.map((nft: any) => ({
       token_id: nft.tokenId,
       contract_address: contractAddress,
@@ -96,22 +77,17 @@ export async function GET(request: NextRequest) {
     }));
     
     return NextResponse.json({
-      collection: {
-        address: contractAddress,
-        name,
-        symbol,
-        totalSupply: totalSupply,
-      },
+      collection: { address: contractAddress, name, symbol, totalSupply },
       nfts: formattedNfts,
       nextPageKey: nfts.pageKey,
       hasMore: !!nfts.pageKey,
       currentCount: formattedNfts.length,
     });
     
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error fetching contract NFTs:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch contract NFTs' },
+      { error: 'Failed to fetch contract NFTs', details: error.message },
       { status: 500 }
     );
   }
