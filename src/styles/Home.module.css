@@ -1,45 +1,493 @@
 @font-face {
   font-family: Proto Mono;
-  src: url("/fonts/ProtoMono-Medium.ttf");  
+  src: url("/fonts/ProtoMono-Medium.ttf");
 }
 
 .container {
   font-family: "Proto Mono", Helvetica, Arial, sans-serif;
 }
 
+/* Основной контейнер с фоном - применяем к .main */
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   min-height: 100vh;
   background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.884),
       rgba(255, 255, 255, 0)
     ),
-    url('/assets/blurBackground.png');
+    url('/assets/azuki.png');
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: "Proto Mono", Helvetica, Arial, sans-serif;
-  margin: 0 5rem;
 }
 
+/* ========== HEADER Стили ========== */
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background-color: rgba(8, 4, 4, 0.6);
   backdrop-filter: blur(10px);
   color: #929292;
-  display: flex;
-  flex: 1 1 100%;
   font-size: 0.7rem;
   height: 4rem;
   position: fixed;
+  top: 0;
+  left: 0;
   transition: all 0.5s ease 0s;
   width: 100%;
   z-index: 100;
-  padding: 0 13rem;
+  padding: 0 2rem;
+  gap: 1.5rem;
 }
+
+/* Логотип - крайний левый */
+.logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  height: 3rem;
+}
+
+/* Навигация - сразу после логотипа */
+.navItems {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #929292;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+  white-space: nowrap;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.link:hover {
+  color: #ffffff;
+}
+
+/* Поиск - после навигации */
+.searchSection {
+  flex-shrink: 0;
+  width: 400px;
+}
+
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(146, 146, 146, 0.3);
+  border-radius: 8px;
+  padding: 0 1rem;
+  height: 2.5rem;
+  transition: all 0.2s ease;
+}
+
+.searchWrapper:hover {
+  border-color: #ff8700;
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  margin-right: 0.75rem;
+  color: #929292;
+}
+
+.inputField {
+  background: none;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  width: 100%;
+}
+
+.inputField::placeholder {
+  color: #64748b;
+}
+
+.inputField:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Растягивающийся отступ - толкает кнопку вправо */
+.spacer {
+  flex: 1;
+}
+
+/* Кнопка подключения - крайний правый */
+.connectWrapper {
+  flex-shrink: 0;
+  width: 180px;
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1200px) {
+  .searchSection {
+    width: 280px;
+  }
+  
+  .navItems {
+    gap: 1.5rem;
+  }
+  
+  .connectWrapper {
+    width: 160px;
+  }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+  
+  .navItems {
+    display: none;
+  }
+  
+  .searchSection {
+    width: 200px;
+  }
+  
+  .searchWrapper {
+    padding: 0 0.75rem;
+  }
+  
+  .connectWrapper {
+    width: 140px;
+  }
+}
+
+/* ========== HERO SECTION Стили ========== */
+.heroSection {
+  margin-top: 20rem;
+  position: relative;
+  left: 0;
+  right: 0;
+  padding-left: 5rem;
+  padding-right: 2rem;
+  width: 100%;
+  background: transparent;
+}
+
+/* Заголовок Bored Ape Yacht Club */
+.heroSection h2 {
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Подзаголовок BY YUGALABS */
+.heroSection > p {
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Секция bayc_data - прозрачный фон */
+.bayc_data {
+  display: flex;
+  justify-content: space-between;
+  width: 28rem;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: transparent;
+}
+
+.bayc_data__title {
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Числовые значения 67.9 и 125.67 */
+.bayc_data section p:last-child {
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.collection_oneDayTradingVolume {
+  display: flex;
+  align-items: center;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Иконки ETH - уменьшены */
+.ethIconSmall {
+  width: 0.7rem !important;
+  height: 0.7rem !important;
+  display: inline-block;
+  margin-left: 0.2rem;
+  vertical-align: middle;
+}
+
+/* Кнопка VIEW COLLECTION */
+.viewCollection_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.viewCollection_btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.viewCollection_btn svg {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.arrow {
+  margin-left: 0.2rem;
+}
+
+/* ========== КАРУСЕЛЬ Стили ========== */
+.carousel {
+  display: flex;
+  margin-top: 1.5rem;
+  gap: 1.14rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+  justify-content: flex-start;
+}
+
+/* Стили для скроллбара */
+.carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.carousel::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.carousel_section {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.5rem;
+  width: 16.8rem;
+  height: 9.6rem;
+  margin: 0;
+  cursor: pointer;
+  transition: all 450ms ease 0s;
+  overflow: hidden;
+  box-shadow: rgb(0 0 0 / 20%) 0px 10px 30px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.carousel_section:hover {
+  margin-top: -0.5rem;
+  transform: scale(1.05);
+}
+
+.carousel_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.2s ease-in-out 0s;
+}
+
+.carousel_profile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 0.6rem;
+  margin-left: 0.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Надписи на карточках */
+.carousel_section > p {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 0.6rem;
+  font-size: 0.83rem;
+  font-weight: 500;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.05em;
+  margin: 0;
+  text-shadow: rgb(0, 0, 0) 0 0 5px;
+  color: #ffffff;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+/* Адаптивность для карусели */
+@media (max-width: 1400px) {
+  .heroSection {
+    padding-left: 3rem;
+  }
+  
+  .heroSection h2 {
+    font-size: 1.2rem;
+  }
+  
+  .carousel_section {
+    width: 14.4rem;
+    height: 8.4rem;
+  }
+  
+  .carousel_section > p {
+    font-size: 0.7rem;
+  }
+  
+  .carousel_profile {
+    width: 2.1rem;
+    height: 2.1rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .heroSection {
+    padding-left: 2rem;
+  }
+  
+  .heroSection h2 {
+    font-size: 1.1rem;
+  }
+  
+  .heroSection > p {
+    font-size: 0.9rem;
+  }
+  
+  .carousel_section {
+    width: 13.2rem;
+    height: 7.8rem;
+  }
+  
+  .carousel_section > p {
+    font-size: 0.65rem;
+  }
+  
+  .carousel_profile {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .heroSection {
+    padding-left: 1rem;
+  }
+  
+  .heroSection h2 {
+    font-size: 1rem;
+  }
+  
+  .carousel {
+    gap: 0.9rem;
+  }
+  
+  .carousel_section {
+    width: 12rem;
+    height: 7.2rem;
+  }
+  
+  .carousel_section > p {
+    font-size: 0.6rem;
+  }
+  
+  .carousel_profile {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0.4rem;
+    margin-left: 0.4rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .heroSection h2 {
+    font-size: 0.9rem;
+  }
+  
+  .carousel_section {
+    width: 10.8rem;
+    height: 6.6rem;
+  }
+  
+  .carousel_section > p {
+    font-size: 0.55rem;
+  }
+  
+  .carousel_profile {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+}
+
+/* ========== ОСТАЛЬНЫЕ ВАШИ СТИЛИ ========== */
 
 .collectionHeader {
   display: flex;
@@ -56,188 +504,6 @@
   width: 100%;
   z-index: 100;
   padding: 0 2rem;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  height: 3rem;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 3rem;
-}
-
-.nav_items {
-  display: flex;
-  justify-content: space-evenly;
-  width: 17rem;
-  cursor: pointer;
-}
-
-.nav_items > p:hover {
-  color: #ffffff;
-}
-
-.link:hover {
-  color: #ffffff;
-}
-
-.searchSection {
-  display: flex;
-  color: #929292;
-  font-size: 1rem;
-  width: 22rem;
-  height: 2.25rem;
-  align-items: center;
-  padding: 0.2rem;
-  margin-left: -10rem;
-  border: 1px solid #9292928b;
-  border-radius: 0.2rem;
-  cursor: pointer;
-}
-
-.searchSection > section {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 20rem;
-  height: 2.25rem;
-}
-
-.inputField {
-  display: flex;
-  width: 90%;
-  color: rgb(217, 217, 217);
-  background: none;
-  font-size: 0.8rem;
-  padding-left: 0.2rem;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
-}
-
-.connect_btn {
-  color: #000000;
-  background-color: #ff8700;
-  width: 10rem;
-  height: 2.5rem;
-  font-size: 0.85rem;
-  border: none;
-  border-radius: 0.2rem;
-  outline: none;
-  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
-}
-
-.loggedIn_section {
-  color: #ff8700;
-  font-size: 0.5rem;
-  text-shadow: currentcolor 0px 0px 16px;
-}
-
-.heroSection {
-  margin-top: 31rem;
-  position: absolute;
-  left: 0;
-  padding-left: 10rem;
-}
-
-.bayc_data {
-  display: flex;
-  justify-content: space-between;
-  width: 28rem;
-  font-size: 0.8rem;
-  font-weight: bold;
-  align-items: center;
-  margin-top: 1rem;
-  padding: 0.5rem;
-  background-color: #00000068;
-}
-
-.bayc_data__title {
-  color: #929292;
-}
-
-.collection_oneDayTradingVolume {
-  display: flex;
-  align-items: center;
-}
-
-.viewCollection_btn {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  color: #ffffff;
-  background-color: rgba(0, 0, 0, 0.747);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 0.2rem;
-  padding: 0.7rem 1.5rem;
-  align-items: center;
-  outline: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out 0s;
-}
-
-.viewCollection_btn:hover {
-  color: #000000;
-  background-color: #ffffff;
-}
-
-.arrow {
-  margin-left: 0.2rem;
-}
-
-.carousel {
-  display: flex;
-  margin-top: 1.5rem;
-}
-
-.carousel_section {
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 0.3rem;
-  width: 16rem;
-  height: 9rem;
-  margin: 0 0.5rem;
-  cursor: pointer;
-  transition: all 450ms ease 0s;
-  overflow: hidden;
-  box-shadow: rgb(0 0 0 / 20%) 0px 10px 30px;
-  position: relative;
-}
-
-.carousel_section:hover {
-  margin-top: -0.5rem;
-  transform: scale(1.05);
-}
-
-.carousel_img {
-  width: 100%;
-  height: 100%;
-  transition: all 0.2s ease-in-out 0s;
-}
-
-.carousel_profile {
-  display: flex;
-  position: absolute;
-  top: 0;
-  margin-top: 0.5rem;
-  margin-left: 0.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 1.8rem;
-}
-
-.carousel_section > p {
-  font-size: 0.8rem;
-  margin-top: -2.2rem;
-  margin-left: 0.8rem;
-  text-shadow: rgb(0, 0, 0) 0 0 5px;
 }
 
 .airdropPopUp {
@@ -593,28 +859,4 @@
 
 .purchase_btn {
   cursor: pointer;
-}
-
-
-.customConnectButton button {
-  background: #3b82f6 !important;
-  border-radius: 8px !important;
-  padding: 8px 20px !important;
-  font-weight: 500 !important;
-}
-
-.customConnectButton button:hover {
-  background: #2563eb !important;
-}
-
-
-.customConnectButton div[data-testid="rk-account-button"] {
-  background: #1e293b !important;
-  border: 1px solid #334155 !important;
-  border-radius: 8px !important;
-  padding: 6px 12px !important;
-}
-
-.customConnectButton div[data-testid="rk-account-button"]:hover {
-  background: #334155 !important;
 }

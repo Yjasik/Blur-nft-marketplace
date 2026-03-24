@@ -1,17 +1,13 @@
-import Header from '@/components/Header'; 
+// app/page.tsx
+import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-// import Carousel from '@/components/Carousel';
-// import TrendingSection from '@/components/TrendingSection';
-// import AirdropPopUp from '@/components/AirdropPopUp';
+import styles from '@/styles/Home.module.css';  // ← Импорт
 
 export default function Home() {
   return (
-    <main className="main">
+    <main className={styles.main}>  {/* ← Используем styles.main */}
       <Header />
       <HeroSection />
-      {/* <Carousel />
-      <TrendingSection />
-      <AirdropPopUp /> */}
     </main>
   );
 }
