@@ -7,22 +7,14 @@
   font-family: "Proto Mono", Helvetica, Arial, sans-serif;
 }
 
-/* Основной контейнер с фоном - применяем к .main */
+/* ========== ОСНОВНОЙ КОНТЕЙНЕР ========== */
 .main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.884),
-      rgba(255, 255, 255, 0)
-    ),
-    url('/assets/azuki.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  transition: background-image 0.5s ease-in-out;
+  background: #000000;
 }
 
 /* ========== HEADER Стили ========== */
@@ -177,17 +169,18 @@
 
 /* ========== HERO SECTION Стили ========== */
 .heroSection {
-  margin-top: 20rem;
+  margin-top: 15rem;
   position: relative;
   left: 0;
   right: 0;
-  padding-left: 5rem;
-  padding-right: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   width: 100%;
   background: transparent;
+  z-index: 2;
 }
 
-/* Заголовок Bored Ape Yacht Club */
+/* Заголовок - анимация */
 .heroSection h2 {
   font-family: "Proto Mono", Helvetica, Arial, sans-serif;
   font-size: 1.5rem;
@@ -195,10 +188,29 @@
   letter-spacing: 0.05em;
   color: #ffffff;
   margin-bottom: 0.5rem;
+  margin-left: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+  position: relative;
 }
 
-/* Подзаголовок BY YUGALABS */
+/* Декоративная линия под заголовком */
+.heroSection h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #ff8700, transparent);
+  transition: width 0.3s ease;
+}
+
+.heroSection:hover h2::after {
+  width: 100px;
+}
+
+/* Подзаголовок */
 .heroSection > p {
   font-family: "Proto Mono", Helvetica, Arial, sans-serif;
   font-size: 1rem;
@@ -206,7 +218,9 @@
   letter-spacing: 0.05em;
   color: #ffffff;
   margin-bottom: 1rem;
+  margin-left: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
 }
 
 /* Секция bayc_data - прозрачный фон */
@@ -216,7 +230,8 @@
   width: 28rem;
   align-items: center;
   margin-top: 1rem;
-  padding: 0.5rem;
+  margin-left: 0;
+  padding: 0.5rem 0;
   background-color: transparent;
 }
 
@@ -229,7 +244,7 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Числовые значения 67.9 и 125.67 */
+/* Числовые значения */
 .bayc_data section p:last-child {
   font-family: "Proto Mono", Helvetica, Arial, sans-serif;
   font-size: 0.8rem;
@@ -250,7 +265,7 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Иконки ETH - уменьшены */
+/* Иконки ETH */
 .ethIconSmall {
   width: 0.7rem !important;
   height: 0.7rem !important;
@@ -298,40 +313,21 @@
 .carousel {
   display: flex;
   margin-top: 1.5rem;
-  gap: 1.14rem;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-  width: 100%;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+  gap: 1.5rem;
+  flex-wrap: wrap;
   justify-content: flex-start;
-}
-
-/* Стили для скроллбара */
-.carousel::-webkit-scrollbar {
-  height: 6px;
-}
-
-.carousel::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
-}
-
-.carousel::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
-}
-
-.carousel::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  padding: 0.5rem 0 1rem 0;
+  background: transparent;
+  position: relative;
+  z-index: 2;
 }
 
 .carousel_section {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0.5rem;
-  width: 16.8rem;
-  height: 9.6rem;
+  width: 14rem;
+  height: 9rem;
   margin: 0;
   cursor: pointer;
   transition: all 450ms ease 0s;
@@ -344,6 +340,17 @@
 .carousel_section:hover {
   margin-top: -0.5rem;
   transform: scale(1.05);
+}
+
+/* Активная карточка */
+.carousel_section.active {
+  border: 2px solid #ff8700;
+  box-shadow: 0 0 20px rgba(255, 135, 0, 0.5);
+  transform: scale(1.02);
+}
+
+.carousel_section.active:hover {
+  transform: scale(1.07);
 }
 
 .carousel_img {
@@ -371,7 +378,7 @@
   position: absolute;
   bottom: 0.6rem;
   left: 0.6rem;
-  font-size: 0.83rem;
+  font-size: 0.8rem;
   font-weight: 500;
   font-family: "Proto Mono", Helvetica, Arial, sans-serif;
   letter-spacing: 0.05em;
@@ -382,19 +389,15 @@
   white-space: nowrap;
 }
 
-/* Адаптивность для карусели */
-@media (max-width: 1400px) {
-  .heroSection {
-    padding-left: 3rem;
-  }
-  
-  .heroSection h2 {
-    font-size: 1.2rem;
-  }
-  
+/* Адаптивность карусели */
+@media (max-width: 1200px) {
   .carousel_section {
-    width: 14.4rem;
-    height: 8.4rem;
+    width: 12.5rem;
+    height: 8rem;
+  }
+  
+  .carousel {
+    gap: 1.2rem;
   }
   
   .carousel_section > p {
@@ -402,61 +405,38 @@
   }
   
   .carousel_profile {
-    width: 2.1rem;
-    height: 2.1rem;
+    width: 2rem;
+    height: 2rem;
     margin-top: 0.5rem;
     margin-left: 0.5rem;
   }
 }
 
-@media (max-width: 1200px) {
-  .heroSection {
-    padding-left: 2rem;
-  }
-  
-  .heroSection h2 {
-    font-size: 1.1rem;
-  }
-  
-  .heroSection > p {
-    font-size: 0.9rem;
-  }
-  
+@media (max-width: 900px) {
   .carousel_section {
-    width: 13.2rem;
-    height: 7.8rem;
-  }
-  
-  .carousel_section > p {
-    font-size: 0.65rem;
-  }
-  
-  .carousel_profile {
-    width: 1.8rem;
-    height: 1.8rem;
-  }
-}
-
-@media (max-width: 1000px) {
-  .heroSection {
-    padding-left: 1rem;
-  }
-  
-  .heroSection h2 {
-    font-size: 1rem;
+    width: 11rem;
+    height: 7rem;
   }
   
   .carousel {
-    gap: 0.9rem;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .carousel_section {
+    width: 9rem;
+    height: 6rem;
   }
   
-  .carousel_section {
-    width: 12rem;
-    height: 7.2rem;
+  .carousel {
+    gap: 0.8rem;
   }
   
   .carousel_section > p {
     font-size: 0.6rem;
+    bottom: 0.4rem;
+    left: 0.4rem;
   }
   
   .carousel_profile {
@@ -467,27 +447,306 @@
   }
 }
 
-@media (max-width: 800px) {
-  .heroSection h2 {
-    font-size: 0.9rem;
-  }
-  
+@media (max-width: 550px) {
   .carousel_section {
-    width: 10.8rem;
-    height: 6.6rem;
+    width: calc(50% - 0.8rem);
+    min-width: 140px;
+    height: auto;
+    aspect-ratio: 16 / 10;
   }
   
-  .carousel_section > p {
-    font-size: 0.55rem;
-  }
-  
-  .carousel_profile {
-    width: 1.3rem;
-    height: 1.3rem;
+  .carousel {
+    gap: 0.8rem;
+    justify-content: flex-start;
   }
 }
 
-/* ========== ОСТАЛЬНЫЕ ВАШИ СТИЛИ ========== */
+/* ========== ПРОСТРАНСТВО ПЕРЕД ЗАТЕМНЕНИЕМ ========== */
+.spaceBeforeGradient {
+  position: relative;
+  width: 100%;
+  height: 1.5rem;
+  background: transparent;
+  z-index: 2;
+}
+
+/* ========== TRENDING SECTION Стили ========== */
+
+.trendingSection_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  background: #000000;
+  padding: 0 0.5rem 6rem 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Градиентный переход - начинается после отступа */
+.trendingSection_container::before {
+  content: '';
+  position: absolute;
+  top: -1.5rem;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(180deg, 
+    rgba(0,0,0,0) 0%, 
+    rgba(0,0,0,0.15) 20%,
+    rgba(0,0,0,0.4) 50%,
+    rgba(0,0,0,0.7) 80%,
+    #000000 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Декоративный градиент внутри секции */
+.trendingSection_container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255,135,0,0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Контент выше градиентов */
+.trendingSection_header,
+.trendingTableWrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.trendingSection_header {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.75rem;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 2rem;
+}
+
+.trendingSection_header h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #929292;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.trendingSection_header h3:hover {
+  color: #ffffff;
+}
+
+.trendingSection_header h3.active {
+  color: #ff8700;
+  position: relative;
+}
+
+.trendingSection_header h3.active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.75rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ff8700;
+}
+
+.trendingTableWrapper {
+  overflow-x: auto;
+  width: 100%;
+  margin: 0;
+}
+
+.trendingTable {
+  width: 100%;
+  min-width: 1000px;
+  border-collapse: collapse;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+}
+
+.tableHead_row {
+  color: #929292;
+  font-size: 0.75rem;
+  height: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tableHead_row th {
+  text-align: right;
+  padding: 0.75rem 0.5rem;
+  font-weight: 500;
+}
+
+.tableHead_row th:first-child {
+  text-align: left;
+  padding-left: 0;
+}
+
+.tableBody_row {
+  color: #d9d9d9;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s ease;
+}
+
+.tableBody_row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tableBody_row td {
+  text-align: right;
+  padding: 1rem 0.5rem;
+  font-size: 0.85rem;
+}
+
+.tableBody_row td:first-child {
+  text-align: left;
+  font-weight: 500;
+  padding-left: 0;
+}
+
+.collectionCell {
+  text-align: left !important;
+}
+
+.collectionLink {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.collectionLink:hover {
+  color: #ff8700;
+}
+
+.green {
+  color: #ade25d;
+}
+
+.red {
+  color: #f95200;
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1200px) {
+  .heroSection {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .trendingSection_container {
+    padding: 0 0.5rem 4rem 0.5rem;
+  }
+  
+  .trendingSection_container::before {
+    top: -1.5rem;
+    height: 70px;
+  }
+  
+  .trendingTable {
+    min-width: 900px;
+  }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .heroSection {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .heroSection h2 {
+    font-size: 1.2rem;
+  }
+  
+  .heroSection > p {
+    font-size: 0.9rem;
+  }
+  
+  .bayc_data {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .trendingSection_container {
+    padding: 0 0.5rem 3rem 0.5rem;
+  }
+  
+  .trendingSection_container::before {
+    top: -1.5rem;
+    height: 60px;
+    background: linear-gradient(180deg, 
+      rgba(0,0,0,0) 0%, 
+      rgba(0,0,0,0.2) 25%,
+      rgba(0,0,0,0.5) 60%,
+      #000000 100%
+    );
+  }
+  
+  .trendingSection_header {
+    padding-top: 1.5rem;
+  }
+  
+  .trendingSection_header h3 {
+    font-size: 1rem;
+  }
+  
+  .tableHead_row th,
+  .tableBody_row td {
+    font-size: 0.7rem;
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .trendingTable {
+    min-width: 800px;
+  }
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+  .heroSection {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .trendingSection_container {
+    padding: 0 0.5rem 2rem 0.5rem;
+  }
+  
+  .trendingSection_container::before {
+    top: -1.5rem;
+    height: 50px;
+  }
+  
+  .trendingSection_header {
+    padding-top: 1rem;
+  }
+  
+  .tableHead_row th,
+  .tableBody_row td {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.2rem;
+  }
+  
+  .trendingTable {
+    min-width: 700px;
+  }
+}
+
+/* ========== ОСТАЛЬНЫЕ СТИЛИ ========== */
 
 .collectionHeader {
   display: flex;
@@ -534,75 +793,6 @@
   border-radius: 0.3rem;
   letter-spacing: 0.02rem;
   outline: none;
-}
-
-.trendingSection_container {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin: 3rem auto;
-}
-
-.trendingSection_header {
-  display: flex;
-  justify-content: space-between;
-  color: #ffffff;
-  width: 10rem;
-}
-
-.trendingSection_header > h3:hover {
-  cursor: pointer;
-}
-
-.trendingSection_header > h3:first-child {
-  color: #f6ae2d;
-  text-shadow: rgb(255 153 0) 0px 0px 1px, rgb(249 164 0 / 60%) 0px 0px 5px,
-    rgb(249 164 0 / 40%) 0px 5px 4px;
-  font-weight: lighter;
-}
-
-.trendingSection_header > h3:last-child {
-  color: #c1c1c1;
-  font-weight: lighter;
-}
-
-.trendingSection_header > h3:last-child:hover {
-  color: #ffffff;
-}
-
-.trendingTable {
-  width: 100%;
-  margin-top: 2rem;
-  text-align: right;
-}
-
-.tableHead_row {
-  color: #929292;
-  font-size: 0.8rem;
-  height: 3rem;
-  border-bottom: 1px solid #303030;
-}
-
-.firstChild {
-  width: 25rem;
-  text-align: left;
-}
-
-.tableBody_row {
-  color: #d9d9d9;
-  line-height: 1.7rem;
-}
-
-.tableBody_row :first-child {
-  text-align: left;
-}
-
-.green {
-  color: #ade25d;
-}
-
-.red {
-  color: #f95200;
 }
 
 .viewCollection_main {
