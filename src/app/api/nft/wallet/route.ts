@@ -1,7 +1,6 @@
 // app/api/nft/wallet/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getAlchemyClient } from '@/src/lib/alchemy-client';
-import { formatAlchemyNFT } from '@/src/lib/nft-utils';
+import { getAlchemyClient, formatAlchemyNFT } from '@/lib';
 
 export async function GET(request: NextRequest) {
   try {

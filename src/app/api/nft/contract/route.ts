@@ -1,7 +1,6 @@
 // app/api/nft/contract/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getAlchemyClient } from '@/src/lib/alchemy-client';
-import { getViemClient } from '@/src/lib/viem-client';
+import { getAlchemyClient, getViemClient } from '@/lib';
 
 const erc721Abi = [
   { inputs: [], name: 'name', outputs: [{ name: '', type: 'string' }], stateMutability: 'view', type: 'function' },

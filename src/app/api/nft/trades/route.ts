@@ -1,6 +1,6 @@
 // app/api/nft/trades/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getAlchemyClient } from '@/src/lib/alchemy-client';
+import { getAlchemyClient } from '@/lib';
 
 export async function GET(request: NextRequest) {
   try {

@@ -9,6 +9,7 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+contracts/lib/
 
 # testing
 /coverage
@@ -49,3 +50,13 @@ next-env.d.ts
 # Временные файлы
 *.tmp
 .cache/
+
+# Foundry
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+contracts/coverage/
+contracts/lcov.info
+contracts/.env
+contracts/.env.example
+contracts/.vscode/

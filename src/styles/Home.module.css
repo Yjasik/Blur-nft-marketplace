@@ -167,6 +167,146 @@
   }
 }
 
+/* ========== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ HEADER ========== */
+
+/* Кнопка мобильного меню */
+.mobileMenuBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  transition: all 0.2s ease;
+}
+
+.mobileMenuBtn:hover {
+  color: #ff8700;
+}
+
+/* Мобильное меню */
+.mobileMenu {
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 99;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobileLink {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.75rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+.mobileLink:hover {
+  color: #ff8700;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Кнопка подключения кошелька через RainbowKit */
+.connectWrapper {
+  flex-shrink: 0;
+  min-width: 180px;
+}
+
+/* Стили для RainbowKit кнопки (переопределение) */
+.connectWrapper button {
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.05em !important;
+  border-radius: 2rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.connectWrapper button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 135, 0, 0.3);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .navItems {
+    display: none;
+  }
+  
+  .searchSection {
+    display: none;
+  }
+  
+  .connectWrapper {
+    min-width: auto;
+    margin-left: auto;
+  }
+  
+  .spacer {
+    display: none;
+  }
+  
+  .mobileMenuBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header, .collectionHeader {
+    padding: 0 1rem;
+  }
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1200px) and (min-width: 769px) {
+  .searchSection {
+    width: 200px;
+  }
+  
+  .navItems {
+    gap: 1rem;
+  }
+  
+  .link {
+    font-size: 0.75rem;
+  }
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+  .connectWrapper button {
+    font-size: 0.65rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+  
+  .mobileLink {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}
+
 /* ========== HERO SECTION Стили ========== */
 .heroSection {
   margin-top: 15rem;
@@ -307,6 +447,183 @@
 
 .arrow {
   margin-left: 0.2rem;
+}
+
+/* ========== COLLECTION HERO SECTION Стили ========== */
+
+.CollectionHeroSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 5rem;
+  padding: 2rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 2rem;
+}
+
+.collectionInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 200px;
+}
+
+.collectionProfile {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 135, 0, 0.5);
+}
+
+.collection_marketplace_title_icons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.collectionName {
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.collection_icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.collection_icons:hover {
+  transform: scale(1.1);
+  background: rgba(255, 135, 0, 0.3);
+}
+
+.collectionTableWrapper {
+  flex: 1;
+  overflow-x: auto;
+}
+
+.collection_header_dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+}
+
+.collection_header_dataTable_head_row {
+  color: #929292;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.collection_header_dataTable_head_row th {
+  text-align: right;
+  padding: 0.75rem 0.5rem;
+  font-weight: 500;
+}
+
+.collection_header_dataTable_body_row {
+  color: #d9d9d9;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.collection_header_dataTable_body_row td {
+  text-align: right;
+  padding: 1rem 0.5rem;
+}
+
+.collectionNameCell {
+  text-align: left !important;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.priceCell, .volumeCell, .ownersCell, .supplyCell {
+  white-space: nowrap;
+}
+
+.changeCell {
+  font-weight: 500;
+}
+
+.collection_header_dataTable_body_td_red {
+  color: #f95200;
+}
+
+.collection_header_dataTable_body_td_green {
+  color: #ade25d;
+}
+
+.loadingState {
+  width: 100%;
+  text-align: center;
+  padding: 3rem;
+  color: #929292;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .CollectionHeroSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .collectionInfo {
+    width: 100%;
+  }
+  
+  .collectionTableWrapper {
+    width: 100%;
+  }
+  
+  .collection_header_dataTable {
+    min-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .CollectionHeroSection {
+    margin-top: 4rem;
+    padding: 1rem;
+  }
+  
+  .collectionProfile {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .collectionName {
+    font-size: 1rem;
+  }
+  
+  .collection_header_dataTable {
+    font-size: 0.7rem;
+    min-width: 600px;
+  }
+  
+  .collection_header_dataTable_head_row th,
+  .collection_header_dataTable_body_row td {
+    padding: 0.5rem 0.25rem;
+  }
 }
 
 /* ========== КАРУСЕЛЬ Стили ========== */
@@ -1049,4 +1366,711 @@
 
 .purchase_btn {
   cursor: pointer;
+}
+
+/* ========== COLLECTION PURCHASE SECTION Стили ========== */
+
+.collectionPurchaseSection {
+  width: 100%;
+  min-height: 70vh;
+  padding: 2rem;
+  background: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+}
+
+.collectionPurchaseSection_titles {
+  display: flex;
+  gap: 2rem;
+  color: #929292;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.75rem;
+}
+
+.collectionPurchaseSection_titles p {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.collectionPurchaseSection_titles p:hover {
+  color: #ffffff;
+}
+
+.collectionPurchaseSection_titles .activeTab {
+  color: #ff8700;
+  position: relative;
+}
+
+.collectionPurchaseSection_titles .activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: -0.75rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ff8700;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.collectionPurchaseSection_table {
+  width: 100%;
+  min-width: 1000px;
+  border-collapse: collapse;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+}
+
+.collectionPurchaseSection_thead {
+  color: #929292;
+}
+
+.collectionPurchaseSection_thead_row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  height: 3rem;
+}
+
+.collectionPurchaseSection_thead_row th {
+  text-align: left;
+  padding: 0.75rem 0.5rem;
+  font-weight: 500;
+}
+
+.checkboxCell {
+  width: 40px;
+  text-align: center !important;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #ff8700;
+}
+
+.listedCell {
+  width: 100px;
+}
+
+.rarityCell {
+  width: 100px;
+}
+
+.buyNowCell {
+  width: 120px;
+}
+
+.lastSaleCell {
+  width: 120px;
+}
+
+.topBidCell {
+  width: 140px;
+}
+
+.ownerCell {
+  width: 120px;
+}
+
+.heldCell {
+  width: 80px;
+}
+
+.collectionPurchaseSection_tbody {
+  color: #d9d9d9;
+}
+
+.collectionPurchaseSection_tbody_row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.collectionPurchaseSection_tbody_row:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(2px);
+}
+
+.collectionPurchaseSection_tbody_row.selectedRow {
+  background: rgba(255, 135, 0, 0.1);
+}
+
+.collectionPurchaseSection_tbody_row td {
+  padding: 1rem 0.5rem;
+  vertical-align: middle;
+}
+
+/* Информация о NFT */
+.nftInfoCell {
+  min-width: 250px;
+}
+
+.nftInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.collection_thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nftDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nftName {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+
+.nftAttributes {
+  font-size: 0.7rem;
+  color: #929292;
+}
+
+/* Цены и кнопки */
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.priceValue {
+  font-weight: 500;
+}
+
+.buyButton, .bidButton {
+  background: linear-gradient(135deg, #ff8700 0%, #ff6a00 100%);
+  border: none;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  color: #ffffff;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.bidButton {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.buyButton:hover, .bidButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 135, 0, 0.3);
+}
+
+.bidButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Редкость */
+.rarityValue {
+  font-weight: 500;
+  color: #ade25d;
+}
+
+/* Адрес владельца */
+.ownerAddress {
+  font-family: monospace;
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+/* Количество NFT */
+.heldCount {
+  font-weight: 600;
+  color: #ff8700;
+}
+
+/* Выбранные действия */
+.selectedActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 135, 0, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 135, 0, 0.3);
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.bulkBuyButton {
+  background: linear-gradient(135deg, #ff8700 0%, #ff6a00 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  color: #ffffff;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bulkBuyButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 135, 0, 0.3);
+}
+
+.clearButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  color: #ffffff;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Состояния загрузки и ошибок */
+.loadingContainer, .errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  text-align: center;
+}
+
+.loadingText {
+  color: #929292;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+}
+
+.errorText {
+  color: #f95200;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  margin-bottom: 1rem;
+}
+
+.retryButton {
+  background: rgba(255, 135, 0, 0.2);
+  border: 1px solid #ff8700;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  color: #ff8700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.retryButton:hover {
+  background: rgba(255, 135, 0, 0.3);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .collectionPurchaseSection {
+    padding: 1rem;
+  }
+  
+  .collectionPurchaseSection_table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  .collectionPurchaseSection_titles p {
+    font-size: 0.9rem;
+  }
+  
+  .collectionPurchaseSection_thead_row th,
+  .collectionPurchaseSection_tbody_row td {
+    font-size: 0.7rem;
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .nftName {
+    font-size: 0.75rem;
+  }
+  
+  .buyButton, .bidButton {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.6rem;
+  }
+  
+  .selectedActions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* ========== PORTFOLIO СТИЛИ ========== */
+
+.portfolioData_section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  background: #000000;
+}
+
+.portfolioComponent_section {
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.portfolioTitleContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.portfolioTitleLeft {
+  flex: 1;
+}
+
+.portfolioTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.portfolioTitleIcon {
+  font-size: 2rem;
+}
+
+.portfolioAddress {
+  font-size: 0.9rem;
+  color: #ff8700;
+  background: rgba(255, 135, 0, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  font-family: monospace;
+}
+
+.portfolioStats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.statItem {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+}
+
+.statValue {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ff8700;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: #929292;
+}
+
+.portfolioActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.refreshButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.refreshButton:hover {
+  background: rgba(255, 135, 0, 0.2);
+  border-color: #ff8700;
+}
+
+/* Сетка NFT */
+.nftGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.nftCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nftCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 135, 0, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.nftImageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.nftImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.nftCard:hover .nftImage {
+  transform: scale(1.05);
+}
+
+.nftPrice {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  padding: 0.25rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  color: #ff8700;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.nftInfo {
+  padding: 1rem;
+}
+
+.nftName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.25rem 0;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nftCollection {
+  font-size: 0.75rem;
+  color: #929292;
+  margin: 0 0 0.5rem 0;
+}
+
+.nftAttributes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.attributeBadge {
+  font-size: 0.7rem;
+  background: rgba(255, 135, 0, 0.2);
+  color: #ff8700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+}
+
+/* Состояния загрузки */
+.loadingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.nftCardSkeleton {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  overflow: hidden;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeletonImage {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeletonText {
+  height: 20px;
+  margin: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.skeletonTextShort {
+  height: 16px;
+  width: 60%;
+  margin: 0 1rem 1rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Сообщения */
+.connectWalletMessage,
+.emptyState,
+.errorMessage {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  margin: 2rem auto;
+}
+
+.messageIcon,
+.emptyIcon,
+.errorIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.connectWalletMessage h3,
+.emptyState h3,
+.errorMessage h3 {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.connectWalletMessage p,
+.emptyState p,
+.errorMessage p {
+  color: #929292;
+  margin-bottom: 1.5rem;
+}
+
+.exploreButton,
+.retryButton {
+  background: linear-gradient(135deg, #ff8700 0%, #ff6a00 100%);
+  border: none;
+  border-radius: 2rem;
+  padding: 0.6rem 1.5rem;
+  color: #ffffff;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.exploreButton:hover,
+.retryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 135, 0, 0.3);
+}
+
+.nftPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .portfolioData_section {
+    padding: 1rem;
+  }
+  
+  .portfolioTitle {
+    font-size: 1.3rem;
+  }
+  
+  .portfolioTitleIcon {
+    font-size: 1.5rem;
+  }
+  
+  .nftGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+  
+  .nftName {
+    font-size: 0.85rem;
+  }
+  
+  .portfolioStats {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .statItem {
+    padding: 0.3rem 0.8rem;
+  }
+  
+  .statValue {
+    font-size: 1rem;
+  }
+  
+  .statLabel {
+    font-size: 0.7rem;
+  }
 }

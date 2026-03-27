@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-import TrendingSection from '@/components/TrendingSection';  // ← Добавляем импорт
+import TrendingSection from '@/components/TrendingSection'; 
 import styles from '@/styles/Home.module.css';
 
 export default function Home() {
@@ -34,7 +34,7 @@ export default function Home() {
         collectionName={collectionName}
         collectionAuthor={collectionAuthor}
       />
-      <TrendingSection />  {/* ← Добавляем секцию с трендами */}
+      <TrendingSection />
     </main>
   );
 }

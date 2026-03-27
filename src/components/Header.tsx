@@ -3,6 +3,7 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import styles from "@/styles/Home.module.css";
 
 // SVG иконка поиска
@@ -12,18 +13,51 @@ const SearchIcon = () => (
   </svg>
 );
 
-export default function Header() {
+// SVG иконка меню для мобильных
+const MenuIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+  </svg>
+);
+
+interface HeaderProps {
+  variant?: 'default' | 'collection';
+}
+
+export default function Header({ variant = 'default' }: HeaderProps) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Выбираем класс в зависимости от варианта
+  const headerClass = variant === 'collection' 
+    ? styles.collectionHeader 
+    : styles.header;
+
+  if (!mounted) {
+    return null; // Предотвращаем ошибки гидратации
+  }
+
   return (
-    <section className={styles.header}>
+    <header className={headerClass}>
       {/* Логотип - крайний левый */}
       <div className={styles.logo}>
         <Link href="/">
-          <Image src="/assets/blurLogo.png" alt="Blur Logo" width={70} height={40} />
+          <Image 
+            src="/assets/blurLogo.png" 
+            alt="Blur Logo" 
+            width={70} 
+            height={40} 
+            priority 
+          />
         </Link>
       </div>
       
-      {/* Навигация - сразу после логотипа */}
-      <div className={styles.navItems}>
+      {/* Десктопная навигация */}
+      <nav className={styles.navItems}>
         <Link href="/collections" className={styles.link}>
           COLLECTIONS
         </Link>
@@ -33,9 +67,9 @@ export default function Header() {
         <Link href="/airdrop" className={styles.link}>
           AIRDROP
         </Link>
-      </div>
+      </nav>
       
-      {/* Поиск - после навигации */}
+      {/* Поиск */}
       <div className={styles.searchSection}>
         <div className={styles.searchWrapper}>
           <span className={styles.searchIcon}>
@@ -52,7 +86,7 @@ export default function Header() {
       {/* Растягивающийся отступ - толкает кнопку вправо */}
       <div className={styles.spacer}></div>
       
-      {/* Кнопка подключения - крайний правый */}
+      {/* Кнопка подключения кошелька через RainbowKit */}
       <div className={styles.connectWrapper}>
         <ConnectButton 
           chainStatus="icon"
@@ -63,6 +97,42 @@ export default function Header() {
           }}
         />
       </div>
-    </section>
+
+      {/* Кнопка мобильного меню */}
+      <button 
+        className={styles.mobileMenuBtn}
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle menu"
+      >
+        <MenuIcon />
+      </button>
+
+      {/* Мобильное меню (выпадающее) */}
+      {isMobileMenuOpen && (
+        <div className={styles.mobileMenu}>
+          <Link 
+            href="/collections" 
+            className={styles.mobileLink}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            COLLECTIONS
+          </Link>
+          <Link 
+            href="/portfolio" 
+            className={styles.mobileLink}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            PORTFOLIO
+          </Link>
+          <Link 
+            href="/airdrop" 
+            className={styles.mobileLink}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            AIRDROP
+          </Link>
+        </div>
+      )}
+    </header>
   );
 }

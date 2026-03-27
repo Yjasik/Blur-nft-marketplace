@@ -19,7 +19,7 @@
     "incremental": true,
     "types": [
       "node"
-    ], // ← ДОБАВЬТЕ ЭТУ СТРОКУ
+    ],
     "plugins": [
       {
         "name": "next"
