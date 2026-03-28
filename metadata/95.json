@@ -1,0 +1,29 @@
+{
+  "name": "YJS Master #95",
+  "description": "YJS Master - Exclusive NFT Collection from the YJS ecosystem. Limited edition collection of 10,000 unique NFTs.",
+  "image": "ipfs://bafkreiedv4wuuhmzsiy75aqlxwslmmnzvdjnwzvhxl3yyuhduttbdyrbta",
+  "attributes": [
+    {
+      "trait_type": "Rarity",
+      "value": "Epic"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Fire"
+    },
+    {
+      "trait_type": "Power",
+      "value": 63
+    },
+    {
+      "trait_type": "Generation",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "YJS Master"
+    }
+  ],
+  "external_url": "https://yjsmaster.com",
+  "background_color": "000000"
+}

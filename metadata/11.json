@@ -1,0 +1,29 @@
+{
+  "name": "YJS Master #11",
+  "description": "YJS Master - Exclusive NFT Collection from the YJS ecosystem. Limited edition collection of 10,000 unique NFTs.",
+  "image": "ipfs://bafkreif2qaomrdpak3l5k33xfbx4cx3evf64tm7ndosakigl63idtgqs4y",
+  "attributes": [
+    {
+      "trait_type": "Rarity",
+      "value": "Common"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Water"
+    },
+    {
+      "trait_type": "Power",
+      "value": 19
+    },
+    {
+      "trait_type": "Generation",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "YJS Master"
+    }
+  ],
+  "external_url": "https://yjsmaster.com",
+  "background_color": "000000"
+}

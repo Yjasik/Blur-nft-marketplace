@@ -1,0 +1,29 @@
+{
+  "name": "YJS Master #54",
+  "description": "YJS Master - Exclusive NFT Collection from the YJS ecosystem. Limited edition collection of 10,000 unique NFTs.",
+  "image": "ipfs://bafkreibatscuuqttteel2xzjalfrqqjmcg4kqwe6eqmn2sd4rfhh2qyjkm",
+  "attributes": [
+    {
+      "trait_type": "Rarity",
+      "value": "Common"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Magic"
+    },
+    {
+      "trait_type": "Power",
+      "value": 63
+    },
+    {
+      "trait_type": "Generation",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "YJS Master"
+    }
+  ],
+  "external_url": "https://yjsmaster.com",
+  "background_color": "000000"
+}

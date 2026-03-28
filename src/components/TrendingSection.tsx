@@ -15,6 +15,9 @@ const EthIcon = () => (
   </svg>
 );
 
+// Адрес контракта YJS Master
+const YJS_CONTRACT_ADDRESS = "0x2c14Ba2eA0bC4D8770550a59f238092AEcC260a6";
+
 // Данные для таблицы (в реальном приложении будут из API/блокчейна)
 const TRENDING_DATA = [
   {
@@ -27,7 +30,7 @@ const TRENDING_DATA = [
     owners: 4449,
     supply: 10000,
     contractAddress: "0xed5af388653567af2f388e6224dc7c4b3241c544",
-    link: "/collection/azuki"
+    link: "/collection/0xed5af388653567af2f388e6224dc7c4b3241c544"
   },
   {
     name: "Bored Ape Yacht Club",
@@ -39,19 +42,19 @@ const TRENDING_DATA = [
     owners: 5647,
     supply: 9998,
     contractAddress: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
-    link: "/collection/bored-ape-yacht-club"
+    link: "/collection/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
   },
   {
-    name: "Moralis Mage",
-    floorPrice: 1.30,
-    change1D: 26.42,
-    change7D: 78.23,
-    volume1D: 9.65,
-    volume7D: 61.84,
-    owners: 4302,
+    name: "YJS Master",
+    floorPrice: 0.05,
+    change1D: 31.12,
+    change7D: 58.43,
+    volume1D: 8.15,
+    volume7D: 75.81,
+    owners: 1356,
     supply: 10000,
-    contractAddress: "0x...",
-    link: "/collection/moralis-mage"
+    contractAddress: YJS_CONTRACT_ADDRESS,
+    link: `/collection/${YJS_CONTRACT_ADDRESS}`
   },
   {
     name: "Moonbirds",
@@ -63,7 +66,7 @@ const TRENDING_DATA = [
     owners: 3421,
     supply: 9999,
     contractAddress: "0x23581767a106ae21c074b2276d25e5c3e136a68b",
-    link: "/collection/moonbirds"
+    link: "/collection/0x23581767a106ae21c074b2276d25e5c3e136a68b"
   },
   {
     name: "Vee Friends",
@@ -75,7 +78,7 @@ const TRENDING_DATA = [
     owners: 4659,
     supply: 10255,
     contractAddress: "0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb",
-    link: "/collection/vee-friends"
+    link: "/collection/0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb"
   }
 ];
 
@@ -136,7 +139,7 @@ export default function TrendingSection({ activeTab = 'trending', onTabChange }:
               <th>7D VOLUME</th>
               <th>OWNERS</th>
               <th>SUPPLY</th>
-            </tr>
+             </tr>
           </thead>
           <tbody>
             {TRENDING_DATA.map((item, index) => (

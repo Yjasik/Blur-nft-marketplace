@@ -9,6 +9,7 @@ import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol
 contract NFTMarketplace is Ownable, ReentrancyGuard {
     // Структура для хранения информации о лоте
     struct MarketItem {
+        uint256 marketItemId; 
         uint256 tokenId;
         address nftContract;
         address seller;
@@ -74,6 +75,7 @@ contract NFTMarketplace is Ownable, ReentrancyGuard {
         uint256 marketItemId = _marketItemIds;
         
         _marketItems[marketItemId] = MarketItem({
+            marketItemId: marketItemId,
             tokenId: tokenId,
             nftContract: nftContract,
             seller: msg.sender,

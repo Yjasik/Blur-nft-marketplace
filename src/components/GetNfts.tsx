@@ -2,28 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
-import Image from 'next/image';
 import Link from 'next/link';
 import styles from "@/styles/Home.module.css";
-
-// SVG иконка ETH
-const EthIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
-       className="ethIconSmall" 
-       style={{ width: '0.7rem', height: '0.7rem', display: 'inline-block', marginLeft: '0.2rem' }}>
-    <path d="M12 1.5L4.5 12 12 15.75 19.5 12 12 1.5zM12 16.5L4.5 12 12 22.5 19.5 12 12 16.5z" />
-  </svg>
-);
-
-// Компонент-заглушка для NFT
-const NFTPlaceholder = () => (
-  <div className={styles.nftPlaceholder}>
-    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-      <rect width="80" height="80" fill="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"/>
-      <text x="40" y="48" textAnchor="middle" fill="white" fontSize="14" fontFamily="monospace">NFT</text>
-    </svg>
-  </div>
-);
+import CardComp from './CardComp';
+import { CONTRACT_ADDRESSES } from '@/contracts/addresses';
 
 interface NFT {
   token_id: string;
@@ -49,7 +31,6 @@ export default function GetNfts({ limit = 20 }: GetNftsProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
-  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     setMounted(true);
@@ -89,15 +70,6 @@ export default function GetNfts({ limit = 20 }: GetNftsProps) {
 
     fetchNFTs();
   }, [address, isConnected, limit]);
-
-  const handleImageError = (tokenId: string) => {
-    setImageErrors(prev => ({ ...prev, [tokenId]: true }));
-  };
-
-  const formatAddress = (addr: string) => {
-    if (!addr) return '';
-    return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
-  };
 
   if (!mounted) return null;
 
@@ -153,49 +125,13 @@ export default function GetNfts({ limit = 20 }: GetNftsProps) {
 
   return (
     <div className={styles.nftGrid}>
-      {nfts.map((nft, index) => {
-        const hasError = imageErrors[nft.token_id];
-        const imageUrl = nft.image_url && !hasError ? nft.image_url : null;
-        
-        return (
-          <div key={`${nft.contract_address}-${nft.token_id}`} className={styles.nftCard}>
-            <Link href={`/collection/${formatAddress(nft.contract_address)}/${nft.token_id}`}>
-              <div className={styles.nftImageContainer}>
-                {imageUrl ? (
-                  <Image
-                    src={imageUrl}
-                    alt={nft.name}
-                    width={300}
-                    height={300}
-                    className={styles.nftImage}
-                    onError={() => handleImageError(nft.token_id)}
-                    unoptimized
-                  />
-                ) : (
-                  <NFTPlaceholder />
-                )}
-                {nft.estimated_value && (
-                  <div className={styles.nftPrice}>
-                    {nft.estimated_value.toFixed(2)}
-                    <EthIcon />
-                  </div>
-                )}
-              </div>
-              <div className={styles.nftInfo}>
-                <h3 className={styles.nftName}>{nft.name}</h3>
-                <p className={styles.nftCollection}>{nft.collection_name || 'Collection'}</p>
-                {nft.attributes && nft.attributes.length > 0 && (
-                  <div className={styles.nftAttributes}>
-                    <span className={styles.attributeBadge}>
-                      {nft.attributes[0]?.trait_type}: {nft.attributes[0]?.value}
-                    </span>
-                  </div>
-                )}
-              </div>
-            </Link>
-          </div>
-        );
-      })}
+      {nfts.map((nft) => (
+        <CardComp
+          key={`${nft.contract_address}-${nft.token_id}`}
+          nft={nft}
+          marketplaceAddress={CONTRACT_ADDRESSES.NFT_MARKETPLACE as `0x${string}`}
+        />
+      ))}
     </div>
   );
 }

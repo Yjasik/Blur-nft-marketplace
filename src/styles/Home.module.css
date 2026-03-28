@@ -2074,3 +2074,94 @@
     font-size: 0.7rem;
   }
 }
+
+/* ========== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ КОЛЛЕКЦИИ ========== */
+
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  color: #929292;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #ff8700;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  color: #929292;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+}
+
+.errorIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.errorState h2 {
+  color: #f95200;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.errorState p {
+  font-size: 0.9rem;
+  color: #929292;
+}
+
+.collectionInfo {
+  padding: 2rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 4rem;
+}
+
+.collectionTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.collectionSymbol {
+  font-size: 1rem;
+  color: #ff8700;
+  font-family: monospace;
+  margin-bottom: 0.5rem;
+}
+
+.collectionAddress {
+  font-size: 0.8rem;
+  color: #929292;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+.collectionSupply {
+  font-size: 0.9rem;
+  color: #ade25d;
+  margin-top: 0.5rem;
+}
