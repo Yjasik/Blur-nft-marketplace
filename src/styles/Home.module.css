@@ -1290,24 +1290,268 @@
 }
 
 .portfolioComponent_section {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  height: 7rem;
-  margin-top: 5rem;
+  margin-bottom: 2rem;
   padding: 1rem 2rem;
-  border-top: 1px solid #303030;
-  border-bottom: 1px solid #303030;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .portfolioComponent_section > section {
   display: flex;
 }
 
+.portfolioTitleLeft {
+  flex: 1;
+}
+
+.portfolioTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.portfolioTitleIcon {
+  font-size: 1.8rem;
+}
+
+.portfolioAddress {
+  font-size: 0.8rem;
+  color: #ff8700;
+  background: rgba(255, 135, 0, 0.15);
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  font-family: monospace;
+}
+
+.portfolioStats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.statItem {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.3rem 0.8rem;
+  border-radius: 2rem;
+}
+
+.statValue {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ff8700;
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  color: #929292;
+}
+
+.portfolioActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.refreshButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.refreshButton:hover {
+  background: rgba(255, 135, 0, 0.2);
+  border-color: #ff8700;
+}
+
+/* Сообщение о подключении кошелька */
+.connectWalletMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  margin: 2rem auto;
+  max-width: 500px;
+}
+
+.messageIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.connectWalletMessage h3 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+}
+
+.connectWalletMessage p {
+  color: #929292;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Пустое состояние */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  margin: 2rem auto;
+  max-width: 500px;
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.emptyState h3 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+}
+
+.emptyState p {
+  color: #929292;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.exploreButton {
+  background: linear-gradient(135deg, #ff8700 0%, #ff6a00 100%);
+  border: none;
+  border-radius: 2rem;
+  padding: 0.6rem 1.5rem;
+  color: #ffffff;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.exploreButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 135, 0, 0.3);
+}
+
+/* Адаптивность портфолио */
+@media (max-width: 768px) {
+  .portfolioData_section {
+    padding: 1rem;
+  }
+  
+  .portfolioComponent_section {
+    padding: 0.75rem 1rem;
+  }
+  
+  .portfolioTitle {
+    font-size: 1.2rem;
+  }
+  
+  .portfolioTitleIcon {
+    font-size: 1.4rem;
+  }
+  
+  .portfolioAddress {
+    font-size: 0.7rem;
+  }
+  
+  .statValue {
+    font-size: 0.9rem;
+  }
+  
+  .statLabel {
+    font-size: 0.65rem;
+  }
+  
+  .refreshButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+  }
+  
+  .connectWalletMessage,
+  .emptyState {
+    padding: 2rem 1rem;
+    margin: 1rem auto;
+    max-width: 90%;
+  }
+  
+  .messageIcon,
+  .emptyIcon {
+    font-size: 3rem;
+  }
+  
+  .connectWalletMessage h3,
+  .emptyState h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolioTitleContent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .portfolioActions {
+    width: 100%;
+  }
+  
+  .refreshButton {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .portfolioStats {
+    flex-wrap: wrap;
+  }
+}
+
+.portfolioTitleContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .portfolioData_section {
-  margin-top: 3rem;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  background: #000000;
+  margin-top: 4rem;
 }
 
 .dataContainer {
@@ -1729,140 +1973,44 @@
   }
 }
 
-/* ========== PORTFOLIO СТИЛИ ========== */
+/* ========== КАРТОЧКИ NFT (ПОРТФОЛИО) - НОВЫЕ КОМПАКТНЫЕ СТИЛИ ========== */
 
-.portfolioData_section {
-  width: 100%;
-  min-height: 100vh;
-  padding: 2rem;
-  background: #000000;
-}
-
-.portfolioComponent_section {
-  width: 100%;
-  margin-bottom: 2rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.portfolioTitleContent {
+/* Контейнер карточки */
+.cardContainer {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.portfolioTitleLeft {
-  flex: 1;
-}
-
-.portfolioTitle {
-  font-size: 1.8rem;
-  font-weight: 600;
-  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
-  color: #ffffff;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.portfolioTitleIcon {
-  font-size: 2rem;
-}
-
-.portfolioAddress {
-  font-size: 0.9rem;
-  color: #ff8700;
-  background: rgba(255, 135, 0, 0.1);
-  padding: 0.2rem 0.6rem;
-  border-radius: 1rem;
-  font-family: monospace;
-}
-
-.portfolioStats {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 0.75rem;
-}
-
-.statItem {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
+  width: 200px;
+  margin: 0.5rem;
   background: rgba(255, 255, 255, 0.05);
-  padding: 0.4rem 1rem;
-  border-radius: 2rem;
-}
-
-.statValue {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #ff8700;
-}
-
-.statLabel {
-  font-size: 0.8rem;
-  color: #929292;
-}
-
-.portfolioActions {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.refreshButton {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 2rem;
-  padding: 0.5rem 1rem;
-  color: #ffffff;
-  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
-  font-size: 0.75rem;
-  cursor: pointer;
+  border-radius: 12px;
+  padding: 0.75rem;
   transition: all 0.2s ease;
 }
 
-.refreshButton:hover {
-  background: rgba(255, 135, 0, 0.2);
-  border-color: #ff8700;
+.cardContainer:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-/* Сетка NFT */
-.nftGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
+/* Карточка NFT */
 .nftCard {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 1rem;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  cursor: pointer;
 }
 
-.nftCard:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 135, 0, 0.5);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
+/* Контейнер изображения */
 .nftImageContainer {
   position: relative;
   width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
+  border-radius: 8px;
   background: rgba(0, 0, 0, 0.3);
 }
 
+/* Изображение NFT */
 .nftImage {
   width: 100%;
   height: 100%;
@@ -1874,204 +2022,151 @@
   transform: scale(1.05);
 }
 
-.nftPrice {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
-  padding: 0.25rem 0.6rem;
-  border-radius: 1rem;
-  font-size: 0.8rem;
-  color: #ff8700;
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-}
-
+/* Информация об NFT */
 .nftInfo {
-  padding: 1rem;
+  padding: 0.5rem 0 0 0;
+  text-align: center;
 }
 
 .nftName {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #ffffff;
-  margin: 0 0 0.25rem 0;
+  margin: 0;
   font-family: "Proto Mono", Helvetica, Arial, sans-serif;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.nftCollection {
-  font-size: 0.75rem;
+.nftTokenId {
+  font-size: 0.65rem;
   color: #929292;
-  margin: 0 0 0.5rem 0;
+  margin: 0.25rem 0 0 0;
 }
 
-.nftAttributes {
+/* Секция продажи */
+.sellSection {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.attributeBadge {
-  font-size: 0.7rem;
-  background: rgba(255, 135, 0, 0.2);
-  color: #ff8700;
-  padding: 0.2rem 0.5rem;
-  border-radius: 1rem;
-}
-
-/* Состояния загрузки */
-.loadingGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.nftCardSkeleton {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 1rem;
-  overflow: hidden;
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-.skeletonImage {
   width: 100%;
-  aspect-ratio: 1;
-  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+  margin-top: 0.75rem;
 }
 
-.skeletonText {
-  height: 20px;
-  margin: 1rem;
+/* Поле ввода цены */
+.inputField_amount {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-}
-
-.skeletonTextShort {
-  height: 16px;
-  width: 60%;
-  margin: 0 1rem 1rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-}
-
-@keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-/* Сообщения */
-.connectWalletMessage,
-.emptyState,
-.errorMessage {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 1rem;
-  margin: 2rem auto;
-}
-
-.messageIcon,
-.emptyIcon,
-.errorIcon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.connectWalletMessage h3,
-.emptyState h3,
-.errorMessage h3 {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
   color: #ffffff;
-  margin-bottom: 0.5rem;
-}
-
-.connectWalletMessage p,
-.emptyState p,
-.errorMessage p {
-  color: #929292;
-  margin-bottom: 1.5rem;
-}
-
-.exploreButton,
-.retryButton {
-  background: linear-gradient(135deg, #ff8700 0%, #ff6a00 100%);
-  border: none;
-  border-radius: 2rem;
-  padding: 0.6rem 1.5rem;
-  color: #ffffff;
+  font-size: 0.7rem;
   font-family: "Proto Mono", Helvetica, Arial, sans-serif;
-  font-size: 0.8rem;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
+  text-align: center;
+  outline: none;
   transition: all 0.2s ease;
 }
 
-.exploreButton:hover,
-.retryButton:hover {
-  transform: translateY(-2px);
+.inputField_amount:focus {
+  border-color: #ff8700;
+}
+
+/* Кнопка продажи */
+.sell_btn {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  background: linear-gradient(135deg, #ff8700 0%, #ff6a00 100%);
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: "Proto Mono", Helvetica, Arial, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sell_btn:hover:not(:disabled) {
+  transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(255, 135, 0, 0.3);
 }
 
+.sell_btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Сетка NFT - обновленная для маленьких карточек */
+.nftGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Сообщение об успехе */
+.successMessage {
+  margin-top: 0.5rem;
+  padding: 0.3rem;
+  background: rgba(173, 226, 93, 0.2);
+  border-radius: 6px;
+  font-size: 0.6rem;
+  color: #ade25d;
+  text-align: center;
+}
+
+/* Плейсхолдер для изображения */
 .nftPlaceholder {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-/* Адаптивность */
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
-  .portfolioData_section {
-    padding: 1rem;
-  }
-  
-  .portfolioTitle {
-    font-size: 1.3rem;
-  }
-  
-  .portfolioTitleIcon {
-    font-size: 1.5rem;
+  .cardContainer {
+    width: 160px;
   }
   
   .nftGrid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 1rem;
-  }
-  
-  .nftName {
-    font-size: 0.85rem;
-  }
-  
-  .portfolioStats {
-    flex-wrap: wrap;
     gap: 0.75rem;
   }
   
-  .statItem {
-    padding: 0.3rem 0.8rem;
-  }
-  
-  .statValue {
-    font-size: 1rem;
-  }
-  
-  .statLabel {
+  .nftName {
     font-size: 0.7rem;
+  }
+  
+  .inputField_amount {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.4rem;
+  }
+  
+  .sell_btn {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardContainer {
+    width: 140px;
+  }
+  
+  .nftGrid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.5rem;
+  }
+  
+  .nftName {
+    font-size: 0.65rem;
   }
 }
 

@@ -1,12 +1,10 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAccount, useContractWrite, useWaitForTransactionReceipt } from "wagmi";
 import { parseEther } from "viem";
-import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 
-// ABI для маркетплейса (нужно добавить)
 const MARKETPLACE_ABI = [
   {
     name: "createMarketItem",
@@ -37,24 +35,36 @@ export default function CardComp({ nft, marketplaceAddress }: CardCompProps) {
   const [price, setPrice] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   const { writeContract, data: hash, isPending } = useContractWrite();
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({
     hash,
   });
 
-  // Формируем URL изображения
-  const getImageUrl = () => {
-    if (imageError || !nft.image_url) return null;
-    
-    if (nft.image_url.includes("ipfs://")) {
-      const ipfsHash = nft.image_url.split("ipfs://")[1];
-      return `https://ipfs.io/ipfs/${ipfsHash}`;
+  // Обработка URL изображения
+  useEffect(() => {
+    if (!nft.image_url || imageError) {
+      setImageSrc(null);
+      return;
     }
-    return nft.image_url;
-  };
-
-  const imageUrl = getImageUrl();
+    
+    let url = nft.image_url;
+    
+    // Если это data URL (начинается с data:image), используем как есть
+    if (url.startsWith('data:')) {
+      setImageSrc(url);
+      return;
+    }
+    
+    // Если это IPFS ссылка
+    if (url.includes('ipfs://')) {
+      const ipfsHash = url.split('ipfs://')[1];
+      url = `https://ipfs.io/ipfs/${ipfsHash}`;
+    }
+    
+    setImageSrc(url);
+  }, [nft.image_url, imageError]);
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPrice(e.target.value);
@@ -96,15 +106,19 @@ export default function CardComp({ nft, marketplaceAddress }: CardCompProps) {
     <div className={styles.cardContainer}>
       <div className={styles.nftCard}>
         <div className={styles.nftImageContainer}>
-          {imageUrl ? (
-            <Image
-              src={imageUrl}
+          {imageSrc ? (
+            <img
+              src={imageSrc}
               alt={nft.name}
-              width={300}
-              height={300}
               className={styles.nftImage}
-              onError={() => setImageError(true)}
-              unoptimized
+              onError={() => {
+                console.error("Image failed to load:", imageSrc?.slice(0, 100));
+                setImageError(true);
+              }}
+              onLoad={() => {
+                console.log("Image loaded successfully");
+              }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
           ) : (
             <div className={styles.nftPlaceholder}>
@@ -117,6 +131,7 @@ export default function CardComp({ nft, marketplaceAddress }: CardCompProps) {
         </div>
         <div className={styles.nftInfo}>
           <h3 className={styles.nftName}>{nft.name}</h3>
+          <p className={styles.nftTokenId}>ID: {nft.token_id}</p>
         </div>
       </div>
       
