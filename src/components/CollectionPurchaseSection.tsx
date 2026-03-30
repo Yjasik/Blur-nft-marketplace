@@ -5,15 +5,7 @@ import Image from "next/image";
 import { useAccount, useReadContract, usePublicClient } from "wagmi";
 import { formatEther, erc721Abi } from "viem";
 import styles from "@/styles/Home.module.css";
-
-// SVG иконка ETH
-const EthIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
-       className="ethIconSmall" 
-       style={{ width: '0.7rem', height: '0.7rem', display: 'inline-block', marginLeft: '0.2rem' }}>
-    <path d="M12 1.5L4.5 12 12 15.75 19.5 12 12 1.5zM12 16.5L4.5 12 12 22.5 19.5 12 12 16.5z" />
-  </svg>
-);
+import { EthIcon } from "@/components/icons";
 
 // Типы данных
 interface NFTMetadata {

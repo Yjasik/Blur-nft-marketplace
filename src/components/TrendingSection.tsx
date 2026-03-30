@@ -1,22 +1,9 @@
 'use client';
 
 import Link from "next/link";
-import { useReadContract } from 'wagmi';
-import { formatEther } from 'viem';
-import { sepolia } from 'wagmi/chains';
 import styles from "@/styles/Home.module.css";
-
-// SVG иконка ETH (уменьшенная)
-const EthIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
-       className="ethIconSmall" 
-       style={{ width: '0.7rem', height: '0.7rem', display: 'inline-block', marginLeft: '0.2rem' }}>
-    <path d="M12 1.5L4.5 12 12 15.75 19.5 12 12 1.5zM12 16.5L4.5 12 12 22.5 19.5 12 12 16.5z" />
-  </svg>
-);
-
-// Адрес контракта YJS Master
-const YJS_CONTRACT_ADDRESS = "0x2c14Ba2eA0bC4D8770550a59f238092AEcC260a6";
+import { EthIcon } from "@/components/icons";
+import { CONTRACT_ADDRESSES } from '@/contracts/addresses';
 
 // Данные для таблицы (в реальном приложении будут из API/блокчейна)
 const TRENDING_DATA = [
@@ -53,8 +40,8 @@ const TRENDING_DATA = [
     volume7D: 75.81,
     owners: 1356,
     supply: 10000,
-    contractAddress: YJS_CONTRACT_ADDRESS,
-    link: `/collection/${YJS_CONTRACT_ADDRESS}`
+    contractAddress: CONTRACT_ADDRESSES.YJS_MASTER,
+    link: `/collection/${CONTRACT_ADDRESSES.YJS_MASTER}`
   },
   {
     name: "Moonbirds",

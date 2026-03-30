@@ -4,20 +4,9 @@ import { useState, useEffect } from "react";
 import { useAccount, useContractWrite, useWaitForTransactionReceipt } from "wagmi";
 import { parseEther } from "viem";
 import styles from "@/styles/Home.module.css";
+import NFTMarketplaceABI from '@/contracts/abi/NFTMarketplace.json';
 
-const MARKETPLACE_ABI = [
-  {
-    name: "createMarketItem",
-    type: "function",
-    inputs: [
-      { name: "nftContract", type: "address" },
-      { name: "tokenId", type: "uint256" },
-      { name: "price", type: "uint256" }
-    ],
-    outputs: [],
-    stateMutability: "nonpayable"
-  }
-] as const;
+const MARKETPLACE_ABI = NFTMarketplaceABI.abi;
 
 interface CardCompProps {
   nft: {

@@ -7,35 +7,11 @@ import { useReadContract } from 'wagmi';
 import Header from '@/components/Header';
 import YjsCollectionHeroSection from '@/components/YjsCollectionHeroSection';
 import CollectionPurchaseSection from '@/components/CollectionPurchaseSection';
+import YjsCollectionPurchaseSection from '@/components/YjsCollectionPurchaseSection';
 import styles from '@/styles/Home.module.css';
+import { CONTRACT_ADDRESSES } from '@/contracts/addresses';
+import { ERC721_BASIC_ABI } from '@/contracts/abi/erc721-basic';
 
-// ABI для чтения базовой информации о коллекции
-const ERC721_BASIC_ABI = [
-  {
-    inputs: [],
-    name: "name",
-    outputs: [{ type: "string" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [],
-    name: "symbol",
-    outputs: [{ type: "string" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [],
-    name: "totalSupply",
-    outputs: [{ type: "uint256" }],
-    stateMutability: "view",
-    type: "function"
-  }
-] as const;
-
-// Адрес вашего контракта YJS Master
-const YJS_CONTRACT_ADDRESS = "0x2c14Ba2eA0bC4D8770550a59f238092AEcC260a6";
 
 interface CollectionData {
   address: string;
@@ -75,7 +51,7 @@ export default function CollectionPage() {
 
   useEffect(() => {
     // Проверяем, является ли это коллекцией YJS Master
-    if (collectionAddress?.toLowerCase() === YJS_CONTRACT_ADDRESS.toLowerCase()) {
+    if (collectionAddress?.toLowerCase() === CONTRACT_ADDRESSES.YJS_MASTER.toLowerCase()) {
       setIsYJSCollection(true);
     } else {
       setIsYJSCollection(false);
@@ -121,20 +97,18 @@ export default function CollectionPage() {
     );
   }
 
-  // Если это коллекция YJS Master, используем специальный компонент
+  // ✅ Если это коллекция YJS Master, используем специальный компонент с реальными данными
   if (isYJSCollection) {
     return (
       <main className={styles.main}>
         <Header variant="collection" />
         <YjsCollectionHeroSection contractAddress={collectionAddress as `0x${string}`} />
-        <CollectionPurchaseSection 
-          contractAddress={collectionAddress}
-        />
+        <YjsCollectionPurchaseSection /> {/* ✅ Используем реальный компонент вместо мокового */}
       </main>
     );
   }
 
-  // Для других коллекций используем общий компонент
+  // Для других коллекций используем общий компонент (моковый или общий)
   return (
     <main className={styles.main}>
       <Header variant="collection" />
